@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "wifi-password": "^3.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  },
+  "scripts": {}
+}

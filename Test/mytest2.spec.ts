@@ -5,5 +5,5 @@ test("verify page URL", async ({ page }) => {
   await expect(page).toHaveURL(/automation/);
 
   const url = await page.url();
-  console.log("Page URL:", await page.url());
+  console.log("Page URL:", page.url());
 });

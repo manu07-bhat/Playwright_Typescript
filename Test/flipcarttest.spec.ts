@@ -19,3 +19,33 @@ test("flipcart", async ({ page }) => {
   console.log(await input.inputValue());
   console.log("error message is: ", await errormes.first().textContent());
 });
+
+//AI with mpdification
+test("Flipkart login with invalid credentials", async ({ page }) => {
+  // Navigate to Flipkart
+  await page.goto("https://www.flipkart.com");
+
+  // Enter incorrect credentials
+  await page.fill('input[type="text"]', "wronguser@test.com");
+  //   await page.fill('input[type="password"]', 'wrongpassword');
+
+  // Click Login button
+  await page.locator('button:has-text("OTP")').click();
+
+  // Wait for error message
+  const errorLocator = page.locator(
+    'span:has-text("Please enter valid Email ID/Mobile number")',
+  );
+
+  await expect(errorLocator).toBeVisible({ timeout: 10000 });
+
+  // Capture error message text
+  const errorText = await errorLocator.textContent();
+  console.log("Error Message:", errorText);
+
+  // Optional assertion (adjust based on actual message)
+  expect(errorText).toContain("enter valid Email ID/Mobile number");
+
+  // Take screenshot for proof
+  await page.screenshot({ path: "invalid-login.png", fullPage: true });
+});

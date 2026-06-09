@@ -51,6 +51,7 @@ test.only("check_box", async ({ page }) => {
 
   const checkboxes: Locator[] = days.map((index) => page.getByLabel(index));
   expect(checkboxes.length).toBe(7);
+
   for (const checkboxs of checkboxes) {
     await checkboxs.check();
     await expect(checkboxs).toBeChecked();
@@ -64,5 +65,44 @@ test.only("check_box", async ({ page }) => {
   //   }
 
   //select last 3 checkboxes
-  
+
+  for (const checkboxs of checkboxes.slice(-3)) {
+    await checkboxs.uncheck();
+    await expect(checkboxs).not.toBeChecked();
+
+    await page.waitForTimeout(1000);
+  }
+
+  // toggle checkbox if checked- uncheck || if unchecked - checked
+
+  for (const checkboxs of checkboxes) {
+    if ((await checkboxs.isChecked()) === false) {
+      await checkboxs.check();
+      await expect(checkboxs).toBeChecked();
+    } else {
+      await checkboxs.uncheck();
+      await expect(checkboxs).not.toBeChecked();
+
+      //   await page.waitForTimeout(2000);
+    }
+  }
+
+  // ramdomely select checkbox - using index (1,3,6) & assert
+
+  const indx = [1, 3, 6];
+  for (const i of indx) {
+    await checkboxes[i].check();
+    await expect(checkboxes[i]).toBeChecked();
+  }
+
+  // select the checkbox based on the label
+  const weekname: String = "friday";
+
+  for (const label of days) {
+    if (label.toLowerCase() === weekname.toLowerCase()) {
+      const checkbox: Locator = page.getByLabel(label);
+      await checkbox.check();
+      await expect(checkbox).toBeChecked();
+    }
+  }
 });

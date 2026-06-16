@@ -21,4 +21,5 @@ test("sorteddropdown", async ({ page }) => {
   console.log("sorted_list", sorted_list);
 
   expect(original_arry).toEqual(sorted_list);
+  await page.waitForTimeout(5000);
 });

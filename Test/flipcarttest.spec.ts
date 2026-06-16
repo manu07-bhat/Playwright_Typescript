@@ -22,7 +22,7 @@ test("flipcart", async ({ page }) => {
 
 //AI with mpdification
 test("Flipkart login with invalid credentials", async ({ page }) => {
-  // Navigate to Flipkart
+  // Navigate to  Flipkart
   await page.goto("https://www.flipkart.com");
 
   // Enter incorrect credentials

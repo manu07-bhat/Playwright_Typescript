@@ -32,5 +32,5 @@ test("dropdown", async ({ page }) => {
   for (const i of dropdown_text) {
     console.log(i);
   }
-  await page.waitForTimeout(4000);
+  await page.waitForTimeout(2000);
 });

@@ -8,7 +8,7 @@ test("css_selector_id", async ({ page }) => {
   const searchbox: Locator = page.locator("input#small-searchterms");
   await searchbox.fill("giftcard");
   await page.locator("input#small-searchterms").fill("t-shirt");
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(3000);
 });
 
 test("css_selector_class", async ({ page }) => {

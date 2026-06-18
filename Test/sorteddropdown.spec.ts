@@ -6,8 +6,8 @@ test("sorteddropdown", async ({ page }) => {
     { waitUntil: "domcontentloaded" },
   );
 
-  //   const dropdown_option: Locator = page.locator("#animals>option");
-  const dropdown_option: Locator = page.locator("#colors>option");
+  const dropdown_option: Locator = page.locator("#animals>option");
+  // const dropdown_option: Locator = page.locator("#colors>option");
   //   console.log(await dropdown_option.allTextContents());
 
   const opt_text: string[] = (await dropdown_option.allTextContents()).map(
